@@ -1,6 +1,6 @@
 let nomeAmigo = document.getElementById('nome-amigo');
 let amigosIncluidos = document.getElementById('lista-amigos');
-
+let sorteio = document.getElementById('lista-sorteio')
 function adicionar() {
     if(amigosIncluidos.textContent == "") {
         amigosIncluidos.textContent = nomeAmigo.value;
@@ -10,9 +10,16 @@ function adicionar() {
 }
 
 function sortear(){
+    sorteio.innerHTML = ''
     let amigosArr = amigosIncluidos.textContent.split(', ')
     embaralha(amigosArr)
-    alert(amigosArr)
+   for (let i = 0; i < amigosArr.length; i++) { 
+    
+    let proximoAmigo = (i === amigosArr.length - 1) ? amigosArr[0] : amigosArr[i + 1];
+
+    sorteio.innerHTML = sorteio.innerHTML + `<p>${amigosArr[i]} ==> ${proximoAmigo}</p>`
+}
+    
     
 }
 
